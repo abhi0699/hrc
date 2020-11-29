@@ -13,6 +13,39 @@
   }
 }
 
+.header-styles{
+  height: 3rem;
+  background-color: white;
+  color:black;
+}
+
+.title-style{
+  float:left;
+  margin:10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo-style{
+  float: left;
+  max-height: 60px;
+  max-width: 230px;
+}
+
+.header-span{
+  float:right;
+  margin:10px;
+  cursor:pointer;
+  font-size: 24px;
+}
+
+.custom-heading {
+  float: left;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

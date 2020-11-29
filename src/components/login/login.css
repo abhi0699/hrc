@@ -1,0 +1,24 @@
+.loginDiv{
+    text-align: center!important;
+    margin-top: 20vh!important;
+    height: 50vh;
+    width:50vh;
+    padding: 10px;
+    font-size:24px;
+}
+
+.background{
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.loginText {
+    margin-top: 20px!important;
+}
+
+.loginText .MuiInputBase-input {
+    text-align: center!important;
+}
