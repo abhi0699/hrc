@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 
 
@@ -7,14 +6,13 @@ export function Common(props) {
 
     const history = useHistory();
 
-    function formNamesHandler() {
-        //e.preventDefault();
+    function signInConfirm() {
         history.push('/dashboard');
         return null;
     }
 
-    if(props.assigned)
-    return (formNamesHandler());
+    if(props.value)
+    return (signInConfirm());
     else 
     return null;
 }

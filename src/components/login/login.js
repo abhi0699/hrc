@@ -7,6 +7,7 @@ import axios from 'axios';
 import Background from "../../images/background.png";
 import { useHistory } from "react-router-dom";
 import Header from "../header/header";
+import {Common} from "../common";
 
 
 function LoginComponent(props) {
@@ -16,7 +17,8 @@ function LoginComponent(props) {
     const [helperText, setHelperText] = useState("");
     const history = useHistory();
     const [onLogin, setOnLogin] = useState(true);
-    const [value, setValue] = useState(true);
+    const [value, setValue] = useState(false);
+    const [response, setResponse] = useState();
 
     var sectionStyle = {
         width: "auto",
@@ -51,12 +53,11 @@ function LoginComponent(props) {
         }
 
         axios.post('http://localhost:62643/api/Authentication/'+ userName, JSON.stringify(password),
-            { headers: headers }).then(res => console.log(res))
+            { headers: headers }).then(res => console.log(res.data))
+            .then(response=>setResponse(response))
             .then(assign => setOnLogin(true))
             .then(x=>setValue(true))
             .catch(err => alert("Invalid Credentials, Try Again!"));
-        
-        history.push('/dashboard');
         window.localStorage.setItem("username", userName);
         setError(false);
     };
@@ -94,6 +95,7 @@ function LoginComponent(props) {
                 </div>
                 <div className="col-4"></div>
             </Grid>
+            <Common response={response} value={value}/>
         </React.Fragment>
     )
 }
