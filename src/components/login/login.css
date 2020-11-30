@@ -15,6 +15,21 @@
     background-position: center;
 }
 
+.text p{
+    display: block;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    margin: 1px 1px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: -webkit-center;
+    max-width: 100%;
+    border: 2px solid rgb(104, 212, 151);
+    border-radius: 3px;
+    background-color: rgb(104, 212, 151);
+}
+
 .loginText {
     margin-top: 20px!important;
 }

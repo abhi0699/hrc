@@ -7,7 +7,7 @@ import axios from 'axios';
 import Background from "../../images/background.png";
 import { useHistory } from "react-router-dom";
 import Header from "../header/header";
-import {Common} from "../common";
+import { Common } from "../common";
 
 
 function LoginComponent(props) {
@@ -26,7 +26,7 @@ function LoginComponent(props) {
         backgroundImage: `url(${Background})`,
     };
 
-    
+
     function handleChange(e) {
         if (e.target.id === "username") {
             setUsername(e.target.value)
@@ -44,7 +44,7 @@ function LoginComponent(props) {
             setHelperText("Please enter All Fields")
         }
 
-       
+
         const headers = {
             'Content-Type': 'application/json',
             'responseType': 'json',
@@ -52,11 +52,11 @@ function LoginComponent(props) {
             'observe': 'body'
         }
 
-        axios.post('http://localhost:62643/api/Authentication/'+ userName, JSON.stringify(password),
+        axios.post('http://localhost:62643/api/Authentication/' + userName, JSON.stringify(password),
             { headers: headers }).then(res => console.log(res.data))
-            .then(response=>setResponse(response))
+            .then(response => setResponse(response))
             .then(assign => setOnLogin(true))
-            .then(x=>setValue(true))
+            .then(x => setValue(true))
             .catch(err => alert("Invalid Credentials, Try Again!"));
         window.localStorage.setItem("username", userName);
         setError(false);
@@ -64,7 +64,7 @@ function LoginComponent(props) {
 
     return (
         <React.Fragment>
-            <Header onLogin={onLogin}/>
+            <Header onLogin={onLogin} />
             <Grid container>
                 <div className="row">
                     <div className="col-12 ">
@@ -75,7 +75,8 @@ function LoginComponent(props) {
                 <div className="row">
                     <div className="col-12"></div>
                 </div>
-                <div className="col-4"></div>
+                <div className="col-4 text">
+                </div>
                 <div className="col-4">
                     <div className="loginDiv">
                         <form onSubmit={(e) => handleSubmit(e)}>
@@ -94,8 +95,11 @@ function LoginComponent(props) {
                     </div>
                 </div>
                 <div className="col-4"></div>
+                <div className="col-5 text">
+                    <p>ORDER MANAGEMENT APPLICATION</p>
+                </div>
             </Grid>
-            <Common response={response} value={value}/>
+            <Common response={response} value={value} />
         </React.Fragment>
     )
 }
