@@ -11,14 +11,14 @@ import { Common } from "../common";
 
 
 function LoginComponent(props) {
-    const [userName, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [userName, setUsername] = useState("abhi");
+    const [password, setPassword] = useState("abhi");
     const [error, setError] = useState(false);
     const [helperText, setHelperText] = useState("");
     const history = useHistory();
     const [onLogin, setOnLogin] = useState(true);
-    const [value, setValue] = useState(false);
-    const [response, setResponse] = useState();
+    const [assigned, setAssigned] = useState(false);
+    const [response, setResponse] = useState([]);
 
     var sectionStyle = {
         width: "auto",
@@ -43,23 +43,20 @@ function LoginComponent(props) {
             history.push('/error')
             setHelperText("Please enter All Fields")
         }
-
-
         const headers = {
             'Content-Type': 'application/json',
             'responseType': 'json',
             'Accept': 'application/json',
             'observe': 'body'
         }
-
         axios.post('http://localhost:62643/api/Authentication/' + userName, JSON.stringify(password),
-            { headers: headers }).then(res => console.log(res.data))
+            { headers: headers }).then(res => (res.config.data))
             .then(response => setResponse(response))
             .then(assign => setOnLogin(true))
-            .then(x => setValue(true))
+            .then(x => setAssigned(true))
             .catch(err => alert("Invalid Credentials, Try Again!"));
-        window.localStorage.setItem("username", userName);
-        setError(false);
+
+        setError(false);       
     };
 
     return (
@@ -99,7 +96,7 @@ function LoginComponent(props) {
                     <p>ORDER MANAGEMENT APPLICATION</p>
                 </div>
             </Grid>
-            <Common response={response} value={value} />
+            <Common response={response} assigned={assigned} />
         </React.Fragment>
     )
 }

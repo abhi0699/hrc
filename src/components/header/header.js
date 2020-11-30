@@ -8,7 +8,8 @@ const Header = (props) => {
 
   const history = useHistory();
   var x = props.onLogin;
-
+  var fName = window.localStorage.getItem("fName");
+  
   var logoHeader = {
     backgroundImage: `url(${Logo})`
   }
@@ -27,7 +28,7 @@ const Header = (props) => {
           <H3C>ABC PRODUCTS</H3C>
         </div>}
         {x ? null : <div className="col-3">
-            <span className="header-span"> Hello, {window.localStorage.getItem("username")} </span>
+            <span className="header-span"> Hello, {fName} </span>
         </div>}
         {x ? null : < div className="col-3">
           <span className="header-span" onClick={() => { handleLogout() }}>Logout</span>
